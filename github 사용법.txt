@@ -1,0 +1,487 @@
+// git Bash 를 이용한 Git
+https://gbsb.tistory.com/10
+
+github 사용법
+
+verson control system
+ game save point.
+
+ commit    	게임에서 세이브한다와 같은 의미. 커밋한다고 한다.
+					저장을 원하는 파일들을 묶어서 (= add ) 커밋 명령 수행.
+
+add			 	커밋전에 저장을 원하는 파일들을 묶는 일.  이작업을 
+					스테이지에 파일을 올린다라고 한다. 간단히 'add'라고 한다.
+	
+					내 컴퓨터 어딘가에 스테이지가 있어요.  10개 파일을 작업했어.
+					근데1번과 5번을 묶어서 커밋하고 싶어. 일단 1번과 5번을 스테이지에
+					올린다.  1번과 5번이 스테이지에 올라가면 그걸 커밋할수가 있게 되죠.
+
+github에 업로드 (push)			
+					github에 업로드 하는걸 push라고 한다. 원격저장소에 백업.
+
+github에 Repository 생성 후 해당 주소 복사.
+					https://github.com/devkdb/hello-world.git					
+					
+Soruce Tree 설치   
+					https://www.sourcetreeapp.com/
+					
+					참고자료: https://uxgjs.tistory.com/181
+
+Soruce Tree  'clone' 버튼 눌러서  클론 생성.		
+
+커밋 주의사항
+						반드시 한 번에 하나의 논리적 작업만을 커밋한다.   
+						여러개 작업한거 올리지 말것.
+						커밋 메시지 잘 적는다.
+						
+
+// 다른 강좌.  지옥에서온 GIT
+cd work/devkdb
+mkdir gitfth
+cd gitfth
+git init    //Create an empty Git repository or reinitialize an existing one
+rm -r .git // 만약 init을 취소하려면 아래의 명령어를 입력한다.
+
+git config --global user.namedevkdb
+git config --global user.email tengal73@naver.com
+
+// 버전 생성
+vi f1.txt
+git status
+git add f1.txt
+git commit   // simple title,  detail job info.
+git log
+
+// LF or CRLF 경고메시지 뜰 경우.
+warning: LF will be replaced by CRLF in f1.txt.
+. Git은 똑똑해서 이를 자동 변환해주는 core.autocrlf 라는 기능을 가지고 있는데, 이 기능을 켜주기만 하면 된다.
+윈도우 사용자 :  git config --global core.autocrlf true
+리눅스 맥 사용자:  git config --global core.autocrlf true input
+https://blog.jaeyoon.io/2018/01/git-crlf.html
+
+// 버전 차이점 확인.
+git log -p
+git diff f8e0c6eb79e1306bb858c54520eb4b3292c92cd5..913aed949c34c9dea1ff0d5b4a7899f8978eb614 
+				
+이전 버전을 최신 버전으로. 과거로 돌아가기(reset)					
+$ git reset f8e0c6eb79e1306bb858c54520eb4b3292c92cd5 --hard					
+				*)실제로는 남아있다. 안보일뿐. 복구 가능.
+				*)원격 저장소에 있는 버전은 절대 reset 하면 안된다. 협업중인, 즉, 공유안된것만.
+
+//스스로 공부하는 법				
+https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11603?tab=note					
+	
+불편하거나 할수 없는 것들 어떻게 해결할 것인가? 	
+$ git commit --help					
+
+$ git commit -am "7"  add 안하고 커밋메시지 프롬프트에서.
+
+// git 의 원리
+Gistory설치
+
+	1. 파이썬 설치후  <-- 참고자료 https://dora-guide.com/python-download/
+
+	2. pip 설치(파이썬으로 작성된 패키지 소프트웨어 설치 및 관리.)					
+					원도우즈로고 키 + R 입력후 실행창에서 cmd 입력 후
+					Ctrl + Shift를 누른채로 엔터 <- 관리자모드로 실행창 실행.
+					curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+					다운로드 후 python get-pip.py  입력해서 설치.
+					참고자료 https://dora-guide.com/pip-install/
+					
+					python이 실행 안될경우 패스설정
+					
+							윈도우즈 로고키 + PauseBreak  시스템 속성
+							또는 시작메뉴 오른쪽키 system -> system info
+							-> 고급 시스템설정-> 고급탭에서 환경변수 클릭
+							-> 시스템 변수에서 path 선택하고 편집 클릭
+							-> 새로 만들기. python.exe있는 폴더와 Scripts 프로그램이 있는 경로
+							두가지 넣고 확인.
+							
+							C:\Users\tenga\AppData\Local\Programs\Python\Python39\
+						   C:\Users\tenga\AppData\Local\Programs\Python\Python39\Scripts
+						
+		3. $ pip install gistory     <- gistory 설치함.
+
+	.git 디렉토리에서  gistory 실행하면 서버 뜸.    웹 브라우저에서 localhost:8805 띄움.
+	
+// git add     파일 명이 달라도  내용이 같으면 하나의 파일로만 저장.
+                    git add f1.txt
+					cp f1.txt  f3.txt  
+					git add f3.txt		<-- 이름만.    내용은 같은파일 하나.    
+					
+https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11608?tab=note
+	
+					
+/* objects 파일명의 원리	*/				
+	
+	objects 디렉토리 안에 들어가는 파일, 즉 오브젝트 파일은  3가지 중에 하나.
+	blob : 파일의 내용을 담고 있다.
+	tree : 어떤디렉토리의 파일명과 그 파일명에 해당되는 내용에 해당되는 blob 에 대한 
+			  정보를 담고 있다.
+	[commit]	: 각각의 커밋정보를 가진 오브젝트 아이디를 갖고 있다.	  
+	
+	http://www.sha1-online.com/				
+	
+    "hello"	 는 sha1 해쉬알고리즘을 통해
+	sha1:  aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d				
+					
+	objects/aa/f4c6...   파일에  "hello"	저장. 	
+	
+	// f1.txt  'a' 정보 저장후
+	git add를 하면
+	--> git은 파일안의 정보 a와 부가적인 정보를 압축하고 그 결과를 sha1 해쉬를
+	      통과한 값으로 objects/ 디렉토리안에 디렉토리와 파일 이름 만들고  a 저장한다.
+	      그리고 index 파일에  f1.txt 의 내용(=정보) 저장.
+		  
+/* commit의 원리	*/		
+https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11610?tab=note					
+	
+// status의 원리.	
+	google 검색 . git working directory vs index vs repository
+	< Git Data Transport Commands> 그림 참고.				
+	working 디렉토리 파일을 add 하면 index(staging area)에 저장되고
+    commit; 하면 	index 파일(staging area)에 저장된 내용들이 local repository에 저장.
+	 push 하면 원격 repository에 저장.
+	 
+	 working directory - index,staging area, cache - repository
+					
+// branch 소개			
+					https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11613?tab=note
+					
+	작업 분기하게 되면,  브랜치를 만든다고 한다. 분기후 각각의 브랜치를 갖게 됨.				
+
+// branch 만들기
+	*) $ git commit -am "2"   한번도 add  하지 않은 파일, 즉 버전관리 안한 파일은 자동 add 안된다. 				
+					
+	$ git branch
+	* master				// 현재 사용자는 master라는 브랜치를 쓰고 있다. 기본브랜치.
+
+	branch 만들때 접두어..
+	exp_  // 실험
+    feature  // 어떤 특정한 기능을 추가할때.
+
+	$ git branch exp	
+	
+	$ git checkout exp		// master 체크아웃하고 exp로 들어간다.
+	Switched to branch 'exp'
+			
+// branch 정보 확인
+	
+	$ git log --branches  --decorate --graph
+	
+	$ git log --branches --decorate --graph --oneline
+	* 8cb0e7e (HEAD -> master) 5
+	| * 9170563 (exp) 4
+	| * 33c6de7 3
+	|/
+	* b5c62b7 2
+	* 93e7410 1
+	
+	*)커멘더라인을 쓰는 이유는 가치가 있기 때문에 사용.  그래프 같은건 GUI 가 낫다. 상황에 따라 적합한 도구를 ...
+	
+	// 차이 비교할때.
+	$ git log master..exp  // master에는 없고 exp에는 있는것을 보여준다.
+	
+	$ git log exp..master	// exp에는 없고 master에 있는 거 보여준다.
+	
+	$ git log -p exp..master  // 자세히.
+
+	$ git diff master..exp
+	
+// branch 병합
+	
+	//exp와 master 같게 (master에 없는 3,4커밋 복사.)
+	$ git log --branches --decorate --graph --oneline
+	* 8cb0e7e (HEAD -> master) 5
+	| * 9170563 (exp) 4
+	| * 33c6de7 3
+	|/
+	* b5c62b7 2
+	* 93e7410 1
+
+	exp를 master로 가져올거면,  master로 checkout하고
+	git merge exp 해야한다.
+	
+	// 결과 확인
+	$ git log --branches --decorate --graph --oneline
+
+	*   f001814 (HEAD -> master) Merge branch 'exp'
+	|\
+	| * 9170563 (exp) 4
+	| * 33c6de7 3
+	* | 8cb0e7e 5
+	|/
+	* b5c62b7 2
+	* 93e7410 1
+	
+	$ git branch -d exp
+	Deleted branch exp (was f001814).
+
+	// ---- branch 수련	https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11617?tab=note
+	
+	// git-scm.com  공식 메뉴얼.
+	
+	// 어떤 이슈 해결을 위해 브랜치 새로 만들고 작업 후 커밋.
+		$ git checkout -b iss53
+		Switched to a new branch 'iss53'
+		// 이슈 작업처리		
+		$ git commit -a -m 'added a new footer [issue 53]'
+	
+	// 갑자기 급하게 처리해야 할 일이 생김. 
+		$ git checkout master
+		$ git checkout -b hotfix
+		// hotfix 처리 작업후
+		$ git commit -a -m 'fixed the broken email address'
+	
+	// hotfixt merge
+		$ git checkout master
+		$ git merge hotfix
+			Fast_foward 메시지 출력됨.  //빨리감기.		
+			// hotfix브랜치 독립후, master 브랜치는 어떠한  새로운 커밋도 만들지 않았다.  이경우의 merge는 별도의 커밋 생성 안함. master 가 가리키는 커밋이 누구인지를 바꾸기만 한다. hotfix가 가리키는 커밋으로. 
+		
+		$ git branch -d hotfix
+		
+	// 이제 iss53  처리
+		$ git checkout iss53
+		// 이슈 작업 처리 완료.
+		$ git commit -a -m 'added a new footer complete [issue 53]'
+		$ git checkout master
+		$ git merge hotfix
+			recursive 메시지 출력됨.  //빨리감기.				
+			// iss53 독립후에 master가 변화가 생겼다. 별도의 커밋을 만들어 변했다. 이경우 fast_foword를 할 수 없다.  이때 git은 첫번째,두 브랜치의 공통의 조상을 찾고, 3way merge라는 것을 한다. master와 iss53을 합치고 이 두개를 합쳤다는 것을 알려주는 별도의 커밋을 만든다. 
+		
+	// ---- stash   숨기다, 감추다.
+		// 아직 작업이 다 안끝났는데, 다른 브랜치로 checkout해서 작업해야할 경우, 작업이 안끝난 브랜치를 commit하기도 뭐하고, commit 안하면 checkout 할 수 없고.. 이런경우 작업 한걸 어딘가에 숨겨둘수 있고, 가장 최신 브랜치로 이동해서 원하는 작업 브랜치로 checkout 할 수 있다. add 한 파일들만 가능.
+		
+		$ git stash save
+		Saved working directory and index state WIP on test_STASH: f001814 
+		// 작업디렉토리와 인덱스에 저장 되었다. WIP라는 상태로. '작업중' 이란뜻.
+	
+		$ git status  해서 이상 없는지. 커밋할게 없는 걸로 나온다면 ..
+		
+		$ git checkout master 든 원하는 브랜치로 가서 작업한후에
+		
+		$ git checkout  exp// stash save한 브랜치로 다시 돌아온다.
+	
+		$ git stash apply  //  그리고 감췄던 내용을 복원한다.
+		$ git stash list		 // 숨긴 작업 리스트 보여줌.
+		$ git reset --hard HEAD // 최신 커밋상태로 reset. 최신 커밋상태로 우리의 워킹 카피를 보낸다. 다 지운다.
+		$ git stash apply // 다시 복원됨.  여러개일 경우 가장 최근 숨긴 작업을.
+		$ git stash drop  // apply 한거 삭제.. 다음 stash 작업 apply 가능해짐.
+		
+		$ git stash apply; git stash drop; // 복원하고 삭제하고를 한번에.
+		$ git stash pop   // apply와 drop을 다하는 명령어.
+		
+	// ---- 원격 저장소 소개
+			백업, 협업
+	
+	
+	// ---- 원격 저장소 생성
+	
+	$ git init local1
+	$ cd local1/
+	$ vi f1.txt
+	$ git add f1.txt
+	$ git commit -m 1
+	$ cd ..	// 부모 디렉토리로.
+	
+	// bare 벌거벗은, 맨 살 할때 맨. 작업을 할 수 없고 그냥 저장소로써의 기능만 수행할 수 있는 저장소를 만들 수 있는 옵션.
+	$ git init --bare remote
+	$ cd remote/   // bare라는 것은 워킹디렉토리가 없는, .git 파일들만 존재하는 저장소. 왜냐하면 원격저장소는 작업 공간이 아닌 순수하게 저장만 하는 곳이기에
+	bare 옵션을 써서 수정이 불가능하게, 작업이 불가능하게.
+
+	cd ../
+	
+	// 현재 저장소에 원격저장소를 추가한다.
+	$ cd local1/
+	$ git remote
+		// 아무 메시지 안나온다. 원격저장소를 연결 안했기에.
+		
+	$ git remote add origin d/work/devkdb/remote
+	$ git remote -v
+	origin /d/work/devkdb/remote (fetch)
+	origin /d/work/devkdb/remote (push)
+	
+	$ git remote remove origin
+
+	// 원격저장소 origin2에 현재 master 브랜치를 푸쉬.
+	$ git push origin2 master 
+	
+	// 원격저장소에 저장되었는지 확인
+	$	cd remote2
+	$ git log
+	
+	// 푸쉬, 업로드할때 git이 어떻게 동작하는가
+	$ git config --global push.default matching  // git 이 암시적으로 알아서 처리.
+	$ git config --global push.default simple	// 명시적으로 어디에서 어디로 푸쉬하겠다.
+																			// 고 한것만 푸쉬. 엄격.  git push --set-upstream origin2 master
+
+	/* 참고 자료	https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EB%A6%AC%EB%AA%A8%ED%8A%B8-%EC%A0%80%EC%9E%A5%EC%86%8C
+
+    // git remote 하면 현재 프로젝트에 등록된 리모트 저장소를 확인 할 수 있다.
+	// 기존 워킹 디렉토리에 새 리모트 저장소를 쉽게 추가할 수 있는데 git remote add <단축이름> <url> 명령을 사용한다.
+	$ git remote add pb https://github.com/paulboone/ticgit
+	
+	이제 URL 대신에 pb 라는 이름을 사용할 수 있다. 예를 들어 로컬 저장소에는 없지만 Paul의 저장소에 있는 것을 가져오려면 아래과 같이 실행한다.
+
+	$ git fetch pb
+	*/
+	
+	// ---- github 소개
+	// clone(복제)  : 원격저장소를 로컬저장소로 가져올 때. 즉,복제된 저장소. 
+	//							새로만들땐 init
+	$ mkdir git
+	$ git clone https://github.com/devkdb/hello-world.git gitsrc
+	Cloning into 'gitsrc'...
+	remote: Enumerating objects: 4, done.
+	remote: Counting objects: 100% (4/4), done.
+	remote: Compressing objects: 100% (3/3), done.
+	remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0
+	Receiving objects: 100% (4/4), done.
+	
+	$ git log --reverse  // 거꾸로 로그를 볼 수 있다.
+
+	// 남이 만든 커밋을 보려면..
+	$ git checkout 1ab67ccd5fce7c7b8876a22f17532059d091b6c2
+	
+	// ---- 원격 저장소 만들기(Github)
+	//			git은 여러개의 원격저장소를 여러분의 로컬저장소로 저장할 수 있다.
+	$ mkdir gitHubTest
+	$ cd gitHubTest/
+	$ git init   // 최초 로컬저장소를 만든다.
+	$ vi f1.txt
+	$ git add f1.txt
+	$ git config --global core.autocrlf true
+	$ git commit  -m '1'
+	$ git remote add origin https://github.com/devkdb/gitfth.git
+	$ git remote
+	origin
+	
+	// -u 옵션은  처음 push 할때만 사용.  push 하는 원격저장소와 로컬 저장소를 연결.
+	// 다음 부터는 그냥 git push 만 하면 된다.
+	$ git push -u origin master
+	$ vim f1.txt
+	$ git commit -am 2
+	$ git push
+	
+	// 다른 장소에서 이 프로젝트를 작업해야할때.
+	$ mkdir gitHubTest_anderer_computer
+	$ cd gitHubTest_anderer_computer/
+	$ git clone https://github.com/devkdb/gitfth.git .   // '.'  현재 디렉토리에 			
+																						  // 원격저장소 클론 생성.
+	
+	// git_office 디렉토리에 원격저장소 클론 생성.
+	// $ git clone https://github.com/devkdb/gitfth.git git_office 
+	
+	// 이미 원격저장소와 로컬저장소가 연결되어 있고, 
+	// 그때의 별명은 기본적으로 origin 이다.
+	$ git remote -v
+	origin  https://github.com/devkdb/gitfth.git (fetch)
+	origin  https://github.com/devkdb/gitfth.git (push)
+
+	// ---- 동기화 방법(Github)
+	git_home // 집에 있는 컴퓨터, git_office
+	
+	// 1. 집에서 작업 해서 push 까지 해서 원격 저장소에 올렸다.
+	$ cd git_home
+	$ vim f1.txt
+	$ git commit -am 2		// 커밋 메시지 잘못 입력.
+	$ git commit --amend	// 3으로 수정. 고치다 라는 뜻. 커밋 누락된거 작업후 add 후에도 사용.
+											// 원격저장소 올리기 전.
+	$ git push origin master											
+	
+	// 2. 회사에 출근해서 작업.
+	// 작업 시작할때 항상 먼저 원격저장소의 내용을 땡겨온다.
+	$ git pull		// push, pull 등 원격저장소 연동시 암호 안 물어보는것은 공개라서 그렇다.
+	
+	// 원격저장소 연결 제거.
+	$ git remote remove origin											
+	// git remote rename [현재 이름] [바꿀 이름]
+
+	// Git 로컬저장소 삭제하기
+	//	Git 로컬저장소로 지정된 것을 해제하는 방법은 .git 폴더를 삭제하면 된다. 해당 폴더는
+	//	더 이상 Git 관리되지 않는다.
+	
+	/* 
+	// 뭔가 잘못해서 전부 지우고 다시 시작.
+	// 원격저장소 연결 해제, 로컬저장소 지정 해제.
+	$ git remote remove origin
+	$ git remote -v
+	$ git status
+	$ git log -p
+	$ rm -rf .git/
+	$ rm -rf *
+	
+	// 새로 시작
+	$ git clone https://github.com/devkdb/gitfth.git .
+	$ vi f1.txt
+	$ git commit -am 3
+	$ git log
+	$ git remote -v
+	$ git push -u origin master
+	
+	
+	// 아래와 같은 명령어로 삭제된 파일 리스트를 확인할 수 있다.
+	$ git ls-files -d
+
+	// [files] 부분에 삭제된 파일 이름을 써주면 복구가 가능하다.
+	$ git checkout [files]
+
+	// 파일이 여러개인 경우, 아래와 같은 명령으로 삭제된 모든 파일을 복구할 수 있다.
+	$ git ls-files -d | xargs git checkout --
+
+	
+	// ---- Secure Shell (ssh를 이용해서 로그인없이 원격저장소 사용하기(Github))
+	$ ssh-keygen.exe  // 계속 enter
+	/*
+	id_rsa : private key   비밀번호 저장. 내 컴퓨터 저장.  절대 노출되면 안된다.
+	id_rsa.pub : public key.   비밀이 아닌 공개된 정보.  접속하고자 하는 컴터 적당한 곳에 저장.
+	*/
+	
+	// /c/Users/tenga/.ssh/id_rsa 로 이동.  ~ 내 홈 디렉토리. /c/Users/tenga/
+	$ cd ~/.ssh/
+	$ cat id_rsa.pub
+	// 공개키를 긁어와서 Github의 settings - SSH and GPG keys 의 SSH keys에 new key에 저장.
+	
+	// https가 아닌 ssh 로 원격저장소 클론 생성.
+	$ git clone git@github.com:devkdb/git_ssh_test.git gitSSHtest
+	Cloning into 'gitSSHtest'...
+	The authenticity of host 'github.com (140.82.121.4)' can't be established.
+	RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+	Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+	Warning: Permanently added 'github.com,140.82.121.4' (RSA) to the list of known hosts.
+	warning: You appear to have cloned an empty repository.
+
+	// 로컬저장소에서 작업 잘하고 원격저장소에 push 잘됨.
+	$ cd gitSSHtest
+	$ vim f1.txt
+	$ git commit -m 1
+	$ git push
+	
+	
+	// pull
+	원격 저장소로부터 필요한 파일을 다운 + 병합
+	지역 브랜치와, 원격 저장소 origin/master 가 같은 위치를 가리킨다.
+	
+	// ---- pull VS fetch의 원리
+	https://www.inflearn.com/course/%EC%A7%80%EC%98%A5%EC%97%90%EC%84%9C-%EC%98%A8-git/lecture/11639?tab=note
+	
+	//	fetch	https://backlog.com/git-tutorial/kr/stepup/stepup3_2.html
+	원격 저장소로부터 필요한 파일을 다운. 여기서 끝. (병합은 따로 해야 함)
+	지역 브랜치는 원래 가지고 있던 지역 저장소의 최근 커밋 위치를 가리키고, 
+	원격 저장소 origin/master는 가져온 최신 커밋을 가리킨다.
+	신중하게 뭔가를 처리해야 할 때 사용한다.
+	원래 내용과 바뀐 내용과의 차이를 알 수 있다 (git diff HEAD origin/master)
+	commit이 얼마나 됐는지 알 수 있다 (git log --decorate --all --oneline)
+	이런 세부 내용 확인 후, 즉 문제 없다는 것을 확인후 
+	git merge origin/master 하면 git pull 상태와 같아진다. (병합까지 완료)
+
+	// git 브랜칭 배우는 사이트.
+	https://learngitbranching.js.org/?locale=ko	
+	
+	// 하긴 모든것중에 젤 중용한건 겁먹지 않는것이지.
+	겁먹지 말자. 코딩에서 겁먹지 말자. 에러 메시지를 겁먹지 말고 제발 좀 읽어보자.
+	충돌 두렵지 않다.
+	
+	// master에서는 작업 하지 말자. 무조건 새로 브랜치 따서 작업하자.
+	
