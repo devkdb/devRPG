@@ -4,40 +4,65 @@ namespace ConsoleBasic_OOP
 {
     // OOP(은닉성/상속성/다형성)
 
-    // 자동차
-    // 핸들 패달 차문
-    // 전기장치 엔진 ... 고급 기술들 <-> 외부 노출 시킬 필요 없다.
-
-    class Knight
+    // 클래스 형식 변환
+    // null.  없음. 내가 참조하고 있는 type이 아무것도 가리키고 있지 않다.
+    static Player FindPlayerByid(int id)
     {
-        // 접근 한정자 public protected private
-        // int hp;              // private.
-        private int hp;
-        public int mp;          // 상속 받은 경우도 접근 불가.
-        protected int coolTime; // 외부 접근 안됨. 상속받은 아이가 있다면 접근 가능.
+        // id에 해당하는 플레이어를 탐색
 
-        public void SetHp(int hp)
-        {
-            this.hp = hp;
-
-        }
+        // 못찾았으면
+        return null;
     }
 
-    class SuperKnight : Knight
+    class Player
     {
-        void Test()
-        {
-            coolTime = 10;
-        }
+        protected int hp;
+        protected int attack;
+    }
+    class Knight : Player
+    {
+    }
+
+    class Mage : Player
+    {
+        public int mp;
     }
 
     class Program
     {
+        static void EnterGame(Player player)
+        {
+            // 자식 클래스를 부모 클래스로 바꾸고 해당 자식클래스가 맞는지 체크.
+            
+            // 첫번째 방법.
+            bool isMage = (player is Mage);
+            if(isMage)
+            {
+                Mage mage = (Mage)player;
+                mage.mp = 10;
+            }
+
+/*            // 2번째 방법
+            Mage mage = (Player as Mage); // 캐스팅까지 완료해서.
+            if (mage != null) // 실제로 mage였다면.
+            {
+                mage.mp = 10;
+            }
+*/
+        }
+
         static void Main(string[] args)
         {
             Knight knight = new Knight();
-            knight.SetHp(100);  // 여러 군데서, hp 세팅 해도, 문제 발생시 SetHp() 함수만 브레이크포인트 걸고 찾으면 됨.
-            knight.mp = 10; // 문제 발생시, 셋팅하는 곳 다 찾아야 함.
+            Mage mage = new Mage();
+
+            // Mage type -> Player type enable. warum? mage는 모두 player.
+            // Player type -> Mage type?  될수도 아닐수도 있다. Knight 일수도.
+            Player magePlayer = mage;
+            Mage mage2 = (Mage)magePlayer;  // mage인걸 안다. 그래서 이런식으로 casting 강요 가능.
+
+            EnterGame(knight);
+            EnterGame(mage);
         }
     }
 }
