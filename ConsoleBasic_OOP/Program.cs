@@ -2,42 +2,28 @@
 
 namespace ConsoleBasic_OOP
 {
-    // OOP(은닉성/상속성/다형성)
-
-    // 자동차
-    // 핸들 패달 차문
-    // 전기장치 엔진 ... 고급 기술들 <-> 외부 노출 시킬 필요 없다.
-
-    class Knight
-    {
-        // 접근 한정자 public protected private
-        // int hp;              // private.
-        private int hp;
-        public int mp;          // 상속 받은 경우도 접근 불가.
-        protected int coolTime; // 외부 접근 안됨. 상속받은 아이가 있다면 접근 가능.
-
-        public void SetHp(int hp)
-        {
-            this.hp = hp;
-
-        }
-    }
-
-    class SuperKnight : Knight
-    {
-        void Test()
-        {
-            coolTime = 10;
-        }
-    }
+    // 문자열 둘러보기
 
     class Program
     {
         static void Main(string[] args)
         {
-            Knight knight = new Knight();
-            knight.SetHp(100);  // 여러 군데서, hp 세팅 해도, 문제 발생시 SetHp() 함수만 브레이크포인트 걸고 찾으면 됨.
-            knight.mp = 10; // 문제 발생시, 셋팅하는 곳 다 찾아야 함.
+            string name = "Herry Potter";
+
+            // 1. 찾기
+            bool found = name.Contains("Harry"); // 문자열을 받을건데, 이 문자열이 안에 있냐?
+            int index = name.IndexOf('P');  // 문자가 있는지. 7번째. 6 리턴.
+
+            // 2. 변형
+            name = name + " Junior";
+
+            string lowerCaseName = name.ToLower(); // 전부 소문자로
+            string upperCaseName = name.ToUpper(); // 전부 대문자로
+            string newName = name.Replace('r', 'l'); // 모든캐릭터 r을 ㅣ로 바꾸어준다.
+
+            // 3. 분할
+            string[] names = name.Split(new char[] { ' ' });
+            string substringName = name.Substring(5); // 문자열을 0,1,2,3,4,5 몇번째 문자열 부터 잘라서 새로운 문자열 만듬.
         }
     }
 }

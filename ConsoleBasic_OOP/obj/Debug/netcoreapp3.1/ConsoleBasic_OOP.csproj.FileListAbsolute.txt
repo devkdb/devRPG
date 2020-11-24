@@ -1,0 +1,13 @@
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.exe
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.deps.json
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.runtimeconfig.json
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.runtimeconfig.dev.json
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.dll
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\bin\Debug\netcoreapp3.1\ConsoleBasic_OOP.pdb
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.csprojAssemblyReference.cache
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.AssemblyInfoInputs.cache
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.AssemblyInfo.cs
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.csproj.CoreCompileInputs.cache
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.dll
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.pdb
+D:\work\devRPG\basicProgramming\ConsoleBasic_OOP\obj\Debug\netcoreapp3.1\ConsoleBasic_OOP.genruntimeconfig.cache

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work\\devRPG\\repos\\ConsoleBasic_OOP\\ConsoleBasic_OOP.csproj",
+      "projectUniqueName": "D:\\work\\devRPG\\basicProgramming\\ConsoleBasic_OOP\\ConsoleBasic_OOP.csproj",
       "projectName": "ConsoleBasic_OOP",
-      "projectPath": "D:\\work\\devRPG\\repos\\ConsoleBasic_OOP\\ConsoleBasic_OOP.csproj",
+      "projectPath": "D:\\work\\devRPG\\basicProgramming\\ConsoleBasic_OOP\\ConsoleBasic_OOP.csproj",
       "packagesPath": "C:\\Users\\tenga\\.nuget\\packages\\",
-      "outputPath": "D:\\work\\devRPG\\repos\\ConsoleBasic_OOP\\obj\\",
+      "outputPath": "D:\\work\\devRPG\\basicProgramming\\ConsoleBasic_OOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
